@@ -51,5 +51,6 @@ Punctual atom @ALIENTEK
 
 The above content is the English version of the contents of Readme.txt of the manufacturer of the development board I am using.
 
+This is the first step.
 
 
