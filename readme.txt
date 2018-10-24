@@ -51,4 +51,5 @@ Punctual atom @ALIENTEK
 
 The above content is the English version of the contents of Readme.txt of the manufacturer of the development board I am using.
 
-ALIENTEK did not do a tutorial on FreeRTOS porting LwIP. Therefore, I completed the porting of this part with reference to ALIENTEK's UCOS II porting LwIP tutorial and the code "LWIP with FreeRTOS operating system porting".
+
+
