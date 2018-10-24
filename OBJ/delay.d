@@ -41,6 +41,7 @@
 ..\obj\delay.o: ..\FreeRTOS\include\FreeRTOSConfig.h
 ..\obj\delay.o: ..\SYSTEM\usart\usart.h
 ..\obj\delay.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\delay.o: ..\HARDWARE\TIMER\timer.h
 ..\obj\delay.o: ..\FreeRTOS\include\projdefs.h
 ..\obj\delay.o: ..\FreeRTOS\include\portable.h
 ..\obj\delay.o: ..\FreeRTOS\include\deprecated_definitions.h

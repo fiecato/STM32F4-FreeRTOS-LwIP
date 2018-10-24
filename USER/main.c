@@ -2,11 +2,17 @@
 #include "delay.h"
 #include "usart.h"
 #include "led.h"
+#include "timer.h"
+#include "lcd.h"
+#include "key.h"
+#include "beep.h"
+#include "string.h"
+#include "malloc.h"
 #include "FreeRTOS.h"
 #include "task.h"
 /************************************************
- ALIENTEK 探索者STM32F407开发板 FreeRTOS实验2-1
- FreeRTOS移植实验-库函数版本
+ ALIENTEK 探索者STM32F407开发板 FreeRTOS实验20-1
+ FreeRTOS内存管理实验-库函数版本
  技术支持：www.openedv.com
  淘宝店铺：http://eboard.taobao.com 
  关注微信公众平台微信号："正点原子"，免费获取STM32资料。
@@ -24,38 +30,37 @@ TaskHandle_t StartTask_Handler;
 void start_task(void *pvParameters);
 
 //任务优先级
-#define LED0_TASK_PRIO		2
+#define MALLOC_TASK_PRIO	2
 //任务堆栈大小	
-#define LED0_STK_SIZE 		50  
+#define MALLOC_STK_SIZE 	128
 //任务句柄
-TaskHandle_t LED0Task_Handler;
+TaskHandle_t MallocTask_Handler;
 //任务函数
-void led0_task(void *pvParameters);
-
-//任务优先级
-#define LED1_TASK_PRIO		3
-//任务堆栈大小	
-#define LED1_STK_SIZE 		50  
-//任务句柄
-TaskHandle_t LED1Task_Handler;
-//任务函数
-void led1_task(void *pvParameters);
-
-//任务优先级
-#define FLOAT_TASK_PRIO		4
-//任务堆栈大小	
-#define FLOAT_STK_SIZE 		128
-//任务句柄
-TaskHandle_t FLOATTask_Handler;
-//任务函数
-void float_task(void *pvParameters);
+void malloc_task(void *p_arg);
 
 int main(void)
 { 
 	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_4);//设置系统中断优先级分组4
-	delay_init(168);		//初始化延时函数
-	uart_init(115200);     	//初始化串口
-	LED_Init();		        //初始化LED端口
+	delay_init(168);					//初始化延时函数
+	uart_init(115200);     				//初始化串口
+	LED_Init();		        			//初始化LED端口
+	KEY_Init();							//初始化按键
+	LCD_Init();							//初始化LCD
+	my_mem_init(SRAMIN);            	//初始化内部内存池
+	
+	POINT_COLOR = RED;
+	LCD_ShowString(30,10,200,16,16,"ATK STM32F103/407");	
+	LCD_ShowString(30,30,200,16,16,"FreeRTOS Examp 20-1");
+	LCD_ShowString(30,50,200,16,16,"Mem Manage");
+	LCD_ShowString(30,70,200,16,16,"KEY_UP:Malloc,KEY1:Free");
+	LCD_ShowString(30,90,200,16,16,"KEY0:Use Mem");
+	LCD_ShowString(30,110,200,16,16,"ATOM@ALIENTEK");
+	LCD_ShowString(30,130,200,16,16,"2016/11/14");
+	
+	LCD_ShowString(30,170,200,16,16,"Total Mem:      Bytes");
+	LCD_ShowString(30,190,200,16,16,"Free  Mem:      Bytes");
+	LCD_ShowString(30,210,200,16,16,"Message:    ");
+	POINT_COLOR = BLUE;
 	
 	//创建开始任务
     xTaskCreate((TaskFunction_t )start_task,            //任务函数
@@ -66,68 +71,62 @@ int main(void)
                 (TaskHandle_t*  )&StartTask_Handler);   //任务句柄              
     vTaskStartScheduler();          //开启任务调度
 }
- 
+
 //开始任务任务函数
 void start_task(void *pvParameters)
 {
     taskENTER_CRITICAL();           //进入临界区
-    //创建LED0任务
-    xTaskCreate((TaskFunction_t )led0_task,     	
-                (const char*    )"led0_task",   	
-                (uint16_t       )LED0_STK_SIZE, 
-                (void*          )NULL,				
-                (UBaseType_t    )LED0_TASK_PRIO,	
-                (TaskHandle_t*  )&LED0Task_Handler);   
-    //创建LED1任务
-    xTaskCreate((TaskFunction_t )led1_task,     
-                (const char*    )"led1_task",   
-                (uint16_t       )LED1_STK_SIZE, 
-                (void*          )NULL,
-                (UBaseType_t    )LED1_TASK_PRIO,
-                (TaskHandle_t*  )&LED1Task_Handler);        
-    //浮点测试任务
-    xTaskCreate((TaskFunction_t )float_task,     
-                (const char*    )"float_task",   
-                (uint16_t       )FLOAT_STK_SIZE, 
-                (void*          )NULL,
-                (UBaseType_t    )FLOAT_TASK_PRIO,
-                (TaskHandle_t*  )&FLOATTask_Handler);  
+    //创建TASK1任务
+    xTaskCreate((TaskFunction_t )malloc_task,             
+                (const char*    )"malloc_task",           
+                (uint16_t       )MALLOC_STK_SIZE,        
+                (void*          )NULL,                  
+                (UBaseType_t    )MALLOC_TASK_PRIO,        
+                (TaskHandle_t*  )&MallocTask_Handler);   
     vTaskDelete(StartTask_Handler); //删除开始任务
     taskEXIT_CRITICAL();            //退出临界区
 }
 
-//LED0任务函数 
-void led0_task(void *pvParameters)
+
+//MALLOC任务函数 
+void malloc_task(void *pvParameters)
 {
+	u8 *buffer;		
+	u8 times,i,key=0;
+	u32 freemem;
+
+	LCD_ShowxNum(110,170,configTOTAL_HEAP_SIZE,5,16,0);//显示内存总容量	
     while(1)
     {
-        LED0=~LED0;
-        vTaskDelay(500);
+		key=KEY_Scan(0);
+		switch(key)
+		{
+			case WKUP_PRES:				
+				buffer=pvPortMalloc(30);			//申请内存，30个字节
+				printf("申请到的内存地址为:%#x\r\n",(int)buffer);
+				break;
+			case KEY1_PRES:				
+				if(buffer!=NULL)vPortFree(buffer);	//释放内存
+				buffer=NULL;
+				break;
+			case KEY0_PRES:
+				if(buffer!=NULL)					//buffer可用,使用buffer
+				{
+					times++;
+					sprintf((char*)buffer,"User %d Times",times);//向buffer中填写一些数据
+					LCD_ShowString(94,210,200,16,16,buffer);
+				}
+				break;
+		}
+		freemem=xPortGetFreeHeapSize();		//获取剩余内存大小
+		LCD_ShowxNum(110,190,freemem,5,16,0);//显示内存总容量	
+		i++;
+		if(i==50)
+		{
+			i=0;
+			LED0=~LED0;
+		}
+        vTaskDelay(10);
     }
-}   
-
-//LED1任务函数
-void led1_task(void *pvParameters)
-{
-    while(1)
-    {
-        LED1=0;
-        vTaskDelay(200);
-        LED1=1;
-        vTaskDelay(800);
-    }
-}
-
-//浮点测试任务
-void float_task(void *pvParameters)
-{
-	static float float_num=0.00;
-	while(1)
-	{
-		float_num+=0.01f;
-		printf("float_num的值为: %.4f\r\n",float_num);
-        vTaskDelay(1000);
-	}
-}
-
+} 
 

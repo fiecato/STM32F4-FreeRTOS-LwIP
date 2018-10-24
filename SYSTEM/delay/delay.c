@@ -47,7 +47,7 @@ void delay_init(u8 SYSCLK)
  	SysTick_CLKSourceConfig(SysTick_CLKSource_HCLK); 
 	fac_us=SYSCLK;							//不论是否使用OS,fac_us都需要使用
 	reload=SYSCLK;							//每秒钟的计数次数 单位为M	   
-	reload*=1000000/configTICK_RATE_HZ;		//根据configTICK_RATE_HZ设定溢出时间
+	reload*=1000000/configTICK_RATE_HZ;		//根据delay_ostickspersec设定溢出时间
 											//reload为24位寄存器,最大值:16777216,在168M下,约合0.0998s左右	
 	fac_ms=1000/configTICK_RATE_HZ;			//代表OS可以延时的最少单位	   
 	SysTick->CTRL|=SysTick_CTRL_TICKINT_Msk;//开启SYSTICK中断

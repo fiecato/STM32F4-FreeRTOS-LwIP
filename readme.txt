@@ -1,47 +1,54 @@
-ÊµÑéÆ÷²Ä:
-	Ì½Ë÷ÕßSTM32F407¿ª·¢°å
-	
-ÊµÑéÄ¿µÄ:
-	Ñ§Ï°FreeRTOSÔÚSTM32F407ÉÏµÄÒÆÖ²
-	
-Ó²¼þ×ÊÔ´:
-	1,DS0(Á¬½ÓÔÚPF9)£¬DS1(Á¬½ÓÔÚPF10ÉÏ)
-	2,´®¿Ú1(²¨ÌØÂÊ:115200,PA9/PA10Á¬½ÓÔÚ°åÔØUSB×ª´®¿ÚÐ¾Æ¬CH340ÉÏÃæ) 
-	
-ÊµÑéÏÖÏó:
-	±¾ÊµÑéÔÚSTM32F407¿ª·¢°åÉÏÒÆÖ²ÁËFreeRTOS£¬°æ±¾ÎªV9.0.0¡£Àý³ÌÖÐ´´½¨ÁËËÄ¸öÈÎÎñÀ´²âÊÔÒÆÖ²ÊÇ·ñ³É¹¦¡£
-	start_taskÈÎÎñ´´½¨ÆäËû3¸ö²âÊÔÈÎÎñ£¬led0_taskÈÎÎñÖÐLED0ÉÁË¸£¬led1_taskÈÎÎñÖÐLED1ÉÁË¸£¬	
-	float_task²âÊÔ¸¡µãÔËËã¡£
-	
-×¢ÒâÊÂÏî:
-	ÎÞ. 
+Experiment equipment:
+Explorer STM32F407 Development Board
 
-²Î¿¼×ÊÁÏ£ºSTM32F407 FreeRTOS¿ª·¢ÊÖ²á.pdf µÚ¶þÕÂ
+Purpose:
+Learn to use FreeRTOS memory management API functions, including memory application and release.
 
+Hardware resources:
+1, DS0 (connected to PF9), DS1 (connected to PF10)
+2, serial port 1 (baud rate: 115200, PA9/PA10 connected on the onboard USB to serial chip CH340)
+3, ALIENTEK 2.8/3.5/4.3/7 inch LCD module (only supports MCU screen)
+4, button KEY0 (PE4) / KEY1 (PE3) / KEY2 (PE2) / KEY_UP (PA0, also known as WK_UP)
 
--------------------------------------------------------------------------------------------
+Experimental phenomena:
+Press KEY_UP to apply for memory. After the memory application is successful, you can use it. Press KEY0.
+Just use the requested memory. When the memory usage is complete, you can press KEY1 to put the memory.
+Released.
 
-¡ôÆäËûÖØÒªÁ¬½Ó£º
-  ¿ª·¢°å¹âÅÌ×ÊÁÏÏÂÔØµØÖ·£¨ÊÓÆµ+ÎÄµµ+Ô´ÂëµÈ£©£ºhttp://www.openedv.com/posts/list/13912.htm
+Precautions:
+No.
+
+Reference: STM32F407 FreeRTOS Development Manual.pdf Chapter 20
 
 
-¡ôÓÑÇéÌáÊ¾£ºÈç¹ûÄúÏëÒÔºó¼°Ê±Ãâ·ÑµÄÊÕµ½ÕýµãÔ­×ÓËùÓÐ¿ª·¢°å×ÊÁÏ¸üÐÂÔö¼ÓÍ¨Öª£¬Çë¹Ø×¢Î¢ÐÅ¹«ÖÚÆ½Ì¨£º
- 2ÖÖÌí¼Ó·½·¨£º£¨¶¯¶¯ÊÖÌáÉýÄúµÄÑ§Ï°Ð§ÂÊ£¬¾ªÏ²²»¶ÏÅ¶£©
-£¨1£©´ò¿ªÎ¢ÐÅ->Ìí¼ÓÅóÓÑ->¹«ÖÚºÅ->ÊäÈë¡°ÕýµãÔ­×Ó¡±->µã»÷¹Ø×¢
-£¨2£©´ò¿ªÎ¢ÐÅ->Ìí¼ÓÅóÓÑ->ÊäÈë¡°alientek_stm32"->µã»÷¹Ø×¢
- ¾ßÌåÎ¢ÐÅÌí¼Ó·½·¨£¬Çë²Î¿¼Ìû×Ó£ºhttp://www.openedv.com/posts/list/45157.htm
- 
+-------------------------------------------------- -----------------------------------------
+
+â—† Other important connections:
+Â Â Development board CD-ROM data download address (video + document + source code, etc.): http://www.openedv.com/posts/list/13912.htm
 
 
-						
+â—†Friendly reminder: If you want to receive the notification of all the development board information update in the future, please pay attention to the WeChat public platform:
+Â 2 ways to add: (Improve your learning efficiency, surprises constantly)
+(1) Open WeChat -> Add Friends -> Public Number -> Enter "Positive Point Atom" -> Click to follow
+(2) Open WeChat -> Add Friends -> Enter "alientek_stm32"->Click to follow
+Â For specific WeChat addition methods, please refer to the post: http://www.openedv.com/posts/list/45157.htm
+Â 
 
-						ÌÔ±¦µêÆÌ£º http://openedv.taobao.com
-						           http://eboard.taobao.com
-						¹«Ë¾ÍøÕ¾£ºwww.alientek.com
-						¼¼ÊõÂÛÌ³£ºwww.openedv.com
-                                                Î¢ÐÅ¹«ÖÚÆ½Ì¨£ºÕýµãÔ­×Ó
-						µç»°£º020-38271790
-						´«Õæ£º020-36773971
-						¹ãÖÝÊÐÐÇÒíµç×Ó¿Æ¼¼ÓÐÏÞ¹«Ë¾
-						ÕýµãÔ­×Ó@ALIENTEK
-						     2016-11ÔÂ
+
+
+
+Taobao shop: http://openedv.taobao.com
+Http://eboard.taobao.com
+Company website: www.alientek.com
+Technical Forum: www.openedv.com
+Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â WeChat public platform: punctual atom
+Phone: 020-38271790
+Fax: 020-36773971
+Guangzhou Xingyi Electronic Technology Co., Ltd.
+Punctual atom @ALIENTEK
+2016-11 months
+
+
+The above content is the English version of the contents of Readme.txt of the manufacturer of the development board I am using.
+
+ALIENTEK did not do a tutorial on FreeRTOS porting LwIP. Therefore, I completed the porting of this part with reference to ALIENTEK's UCOS II porting LwIP tutorial and the code "LWIP with FreeRTOS operating system porting".

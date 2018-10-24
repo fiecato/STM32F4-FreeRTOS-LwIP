@@ -1,9 +1,10 @@
 #include "sys.h"
 #include "usart.h"	
+#include "string.h"
 ////////////////////////////////////////////////////////////////////////////////// 	 
 //如果使用ucos,则包括下面的头文件即可.
 #if SYSTEM_SUPPORT_OS
-#include "FreeRTOS.h"					//FreeRTOS使用	  
+#include "FreeRTOS.h"					//FreeRTOS使用
 #endif
 //////////////////////////////////////////////////////////////////////////////////	 
 //本程序只供学习使用，未经作者许可，不得用于其它任何用途
@@ -108,8 +109,8 @@ void uart_init(u32 bound){
 
 	//Usart1 NVIC 配置
 	NVIC_InitStructure.NVIC_IRQChannel = USART1_IRQn;//串口1中断通道
-	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority=3;//抢占优先级3
-	NVIC_InitStructure.NVIC_IRQChannelSubPriority =3;		//子优先级3
+	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority=7;//抢占优先级7
+	NVIC_InitStructure.NVIC_IRQChannelSubPriority =0;		//子优先级0
 	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;			//IRQ通道使能
 	NVIC_Init(&NVIC_InitStructure);	//根据指定的参数初始化VIC寄存器、
 
@@ -117,10 +118,10 @@ void uart_init(u32 bound){
 	
 }
 
-
 void USART1_IRQHandler(void)                	//串口1中断服务程序
 {
 	u8 Res;
+	
 	if(USART_GetITStatus(USART1, USART_IT_RXNE) != RESET)  //接收中断(接收到的数据必须是0x0d 0x0a结尾)
 	{
 		Res =USART_ReceiveData(USART1);//(USART1->DR);	//读取接收到的数据
