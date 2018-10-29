@@ -54,3 +54,5 @@ The above content is the English version of the contents of Readme.txt of the ma
 This is the first step.
 
 Refer to "LWIP with FreeRTOS operating system porting" to complete the transplantation of LwIP
+
+This is the second step.
