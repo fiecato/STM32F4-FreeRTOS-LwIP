@@ -1,0 +1,9 @@
+..\obj\ua_mdns.o: ..\OPCUA\src\server\ua_mdns.c
+..\obj\ua_mdns.o: ..\OPCUA\src\server\ua_server_internal.h
+..\obj\ua_mdns.o: ..\OPCUA\src\ua_util_internal.h
+..\obj\ua_mdns.o: ..\OPCUA\include\ua_types.h
+..\obj\ua_mdns.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\ua_mdns.o: ..\OPCUA\include\ua_config.h
+..\obj\ua_mdns.o: ..\OPCUA\arch\freertosLWIP\ua_architecture.h
+..\obj\ua_mdns.o: ..\OPCUA\include\ua_constants.h
+..\obj\ua_mdns.o: ..\OPCUA\include\ua_statuscodes.h

@@ -1,0 +1,9 @@
+..\obj\ua_securechannel_manager.o: ..\OPCUA\src\server\ua_securechannel_manager.c
+..\obj\ua_securechannel_manager.o: ..\OPCUA\src\server\ua_securechannel_manager.h
+..\obj\ua_securechannel_manager.o: ..\OPCUA\src\ua_util_internal.h
+..\obj\ua_securechannel_manager.o: ..\OPCUA\include\ua_types.h
+..\obj\ua_securechannel_manager.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\ua_securechannel_manager.o: ..\OPCUA\include\ua_config.h
+..\obj\ua_securechannel_manager.o: ..\OPCUA\arch\freertosLWIP\ua_architecture.h
+..\obj\ua_securechannel_manager.o: ..\OPCUA\include\ua_constants.h
+..\obj\ua_securechannel_manager.o: ..\OPCUA\include\ua_statuscodes.h

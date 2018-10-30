@@ -56,3 +56,5 @@ This is the first step.
 Refer to "LWIP with FreeRTOS operating system porting" to complete the transplantation of LwIP
 
 This is the second step.
+
+更改lwip，使其支持FreeRTOS。

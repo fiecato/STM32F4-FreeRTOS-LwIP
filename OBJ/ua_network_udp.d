@@ -1,0 +1,9 @@
+..\obj\ua_network_udp.o: ..\OPCUA\arch\ua_network_udp.c
+..\obj\ua_network_udp.o: ..\OPCUA\arch\ua_network_udp.h
+..\obj\ua_network_udp.o: ..\OPCUA\include\ua_server.h
+..\obj\ua_network_udp.o: ..\OPCUA\include\ua_types.h
+..\obj\ua_network_udp.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\ua_network_udp.o: ..\OPCUA\include\ua_config.h
+..\obj\ua_network_udp.o: ..\OPCUA\arch\freertosLWIP\ua_architecture.h
+..\obj\ua_network_udp.o: ..\OPCUA\include\ua_constants.h
+..\obj\ua_network_udp.o: ..\OPCUA\include\ua_statuscodes.h
