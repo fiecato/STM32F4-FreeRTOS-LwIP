@@ -30,8 +30,8 @@ No.
 
 ◆Friendly reminder: If you want to receive the notification of all the development board information update in the future, please pay attention to the WeChat public platform:
  2 ways to add: (Improve your learning efficiency, surprises constantly)
-(1) Open WeChat -> Add Friends -> Public Number -> Enter "Positive Point Atom" -> Click to follow
-(2) Open WeChat -> Add Friends -> Enter "alientek_stm32"->Click to follow
+(1). Open WeChat -> Add Friends -> Public Number -> Enter "Positive Point Atom" -> Click to follow
+(2). Open WeChat -> Add Friends -> Enter "alientek_stm32"->Click to follow
  For specific WeChat addition methods, please refer to the post: http://www.openedv.com/posts/list/45157.htm
  
 
