@@ -1,24 +1,24 @@
-Experiment equipment:
-Explorer STM32F407 Development Board
+### Experiment equipment:
+#### Explorer STM32F407 Development Board
 
-Purpose:
+#### purpose:
 Learn to use FreeRTOS memory management API functions, including memory application and release.
 
-Hardware resources:
-1, DS0 (connected to PF9), DS1 (connected to PF10)
-2, serial port 1 (baud rate: 115200, PA9/PA10 connected on the onboard USB to serial chip CH340)
-3, ALIENTEK 2.8/3.5/4.3/7 inch LCD module (only supports MCU screen)
-4, button KEY0 (PE4) / KEY1 (PE3) / KEY2 (PE2) / KEY_UP (PA0, also known as WK_UP)
+#### hardware resources:
+1. DS0 (connected to PF9), DS1 (connected to PF10)
+2. serial port 1 (baud rate: 115200, PA9/PA10 connected on the onboard USB to serial chip CH340)
+3. ALIENTEK 2.8/3.5/4.3/7 inch LCD module (only supports MCU screen)
+4. button KEY0 (PE4) / KEY1 (PE3) / KEY2 (PE2) / KEY_UP (PA0, also known as WK_UP)
 
-Experimental phenomena:
+#### Experimental phenomena:
 Press KEY_UP to apply for memory. After the memory application is successful, you can use it. Press KEY0.
 Just use the requested memory. When the memory usage is complete, you can press KEY1 to put the memory.
 Released.
 
-Precautions:
+#### Precautions:
 No.
 
-Reference: STM32F407 FreeRTOS Development Manual.pdf Chapter 20
+##### Reference: STM32F407 FreeRTOS Development Manual.pdf Chapter 20
 
 
 -------------------------------------------------- -----------------------------------------
