@@ -1,9 +1,0 @@
-..\obj\ua_services_attribute.o: ..\OPCUA\src\server\ua_services_attribute.c
-..\obj\ua_services_attribute.o: ..\OPCUA\src\server\ua_server_internal.h
-..\obj\ua_services_attribute.o: ..\OPCUA\src\ua_util_internal.h
-..\obj\ua_services_attribute.o: ..\OPCUA\include\ua_types.h
-..\obj\ua_services_attribute.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
-..\obj\ua_services_attribute.o: ..\OPCUA\include\ua_config.h
-..\obj\ua_services_attribute.o: ..\OPCUA\arch\freertosLWIP\ua_architecture.h
-..\obj\ua_services_attribute.o: ..\OPCUA\include\ua_constants.h
-..\obj\ua_services_attribute.o: ..\OPCUA\include\ua_statuscodes.h

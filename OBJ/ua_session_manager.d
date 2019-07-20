@@ -1,9 +1,0 @@
-..\obj\ua_session_manager.o: ..\OPCUA\src\server\ua_session_manager.c
-..\obj\ua_session_manager.o: ..\OPCUA\src\server\ua_session_manager.h
-..\obj\ua_session_manager.o: ..\OPCUA\include\ua_server.h
-..\obj\ua_session_manager.o: ..\OPCUA\include\ua_types.h
-..\obj\ua_session_manager.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
-..\obj\ua_session_manager.o: ..\OPCUA\include\ua_config.h
-..\obj\ua_session_manager.o: ..\OPCUA\arch\freertosLWIP\ua_architecture.h
-..\obj\ua_session_manager.o: ..\OPCUA\include\ua_constants.h
-..\obj\ua_session_manager.o: ..\OPCUA\include\ua_statuscodes.h

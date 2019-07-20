@@ -108,7 +108,7 @@ int main(void)
 		LCD_ShowString(30,110,200,20,16,"LWIP Init Falied!");   //lwip初始化失败
 		delay_ms(1200);
 		LCD_Fill(30,110,230,130,WHITE); //清除显示
-		LCD_ShowString(30,110,200,16,16,"Retrying...");  
+		LCD_ShowString(30,110,200,16,16,"Retrying...");
 	}
 	LCD_ShowString(30,110,200,20,16,"LWIP Init Success!");    //lwip初始化成功
 	

@@ -1,9 +1,0 @@
-..\obj\ua_network_tcp.o: ..\OPCUA\arch\ua_network_tcp.c
-..\obj\ua_network_tcp.o: ..\OPCUA\arch\ua_network_tcp.h
-..\obj\ua_network_tcp.o: ..\OPCUA\include\ua_server.h
-..\obj\ua_network_tcp.o: ..\OPCUA\include\ua_types.h
-..\obj\ua_network_tcp.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
-..\obj\ua_network_tcp.o: ..\OPCUA\include\ua_config.h
-..\obj\ua_network_tcp.o: ..\OPCUA\arch\freertosLWIP\ua_architecture.h
-..\obj\ua_network_tcp.o: ..\OPCUA\include\ua_constants.h
-..\obj\ua_network_tcp.o: ..\OPCUA\include\ua_statuscodes.h
